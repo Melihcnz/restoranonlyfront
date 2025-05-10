@@ -15,7 +15,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { ArrowDown, ArrowUp, Coffee, CreditCard, Utensils, DollarSign, LineChart, Clock, Users, Table, Armchair } from "lucide-react"
+import { ArrowDown, ArrowUp, Coffee, Utensils, DollarSign, Users, Table, Armchair } from "lucide-react"
 
 export default function Page() {
   return (

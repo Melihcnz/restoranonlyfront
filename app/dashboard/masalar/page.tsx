@@ -16,7 +16,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar"
-import { Check, Circle, Coffee, CreditCard, DollarSign, FolderPlus, Table, Timer, Users, X } from "lucide-react"
+import { Circle, Coffee, CreditCard, DollarSign, FolderPlus, Table, Timer, Users, X } from "lucide-react"
 
 export default function Page() {
   const [selectedMasa, setSelectedMasa] = useState<number | null>(null)
