@@ -12,9 +12,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
   SidebarMenuSubButton,
-  SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 
 // Tüm menü öğelerini buraya ekliyoruz (yenileri de dahil)
@@ -103,9 +101,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   // Menü öğeleri için hover state
   const [hoveredItem, setHoveredItem] = React.useState<string | null>(null)
 
-  // Şu anki seçili sayfayı bul
-  const activeItem = menuItems.find(item => item.path === pathname)?.title || null
-  
   return (
     <Sidebar variant="floating" {...props}>
       <SidebarHeader>
