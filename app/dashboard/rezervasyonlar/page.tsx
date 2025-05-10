@@ -26,19 +26,15 @@ import {
   Clock, 
   Users, 
   Phone, 
-  Calendar,
   CheckCircle,
   XCircle,
-  Filter,
-  Loader2
+  Filter
 } from "lucide-react"
 
 export default function Page() {
   const [currentDate, setCurrentDate] = useState<Date>(new Date())
   const [viewMode, setViewMode] = useState<"günlük" | "haftalık" | "aylık">("günlük")
-  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date())
   const [searchQuery, setSearchQuery] = useState("")
-  const [showModal, setShowModal] = useState(false)
   
   // Rezervasyon durumları
   const statusColors = {
@@ -182,7 +178,6 @@ export default function Page() {
             
             <button 
               className="bg-primary text-primary-foreground px-3 py-1.5 rounded-md text-sm font-medium shadow-sm hover:shadow-md transition-all flex items-center gap-1.5"
-              onClick={() => setShowModal(true)}
             >
               <Plus className="size-4" />
               <span>Yeni Rezervasyon</span>

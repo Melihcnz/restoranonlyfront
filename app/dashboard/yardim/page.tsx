@@ -299,7 +299,7 @@ export default function Page() {
               {searchQuery && (
                 <div className="p-4 border-b">
                   <p className="text-sm text-muted-foreground">
-                    "{searchQuery}" için {filteredFaqs.length} sonuç bulundu
+                    &ldquo;{searchQuery}&rdquo; için {filteredFaqs.length} sonuç bulundu
                   </p>
                 </div>
               )}

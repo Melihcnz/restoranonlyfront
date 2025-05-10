@@ -101,10 +101,37 @@ export default function Page() {
     }
   ]
   
-  const siparisDetay = (siparis: any) => {
+  // Sipariş ve ürün tipleri tanımlıyorum
+  interface Urun {
+    id: number;
+    ad: string;
+    adet: number;
+    fiyat: number;
+  }
+
+  interface AktifSiparis {
+    id: number;
+    masa: string;
+    zaman: string;
+    tutar: number;
+    urunler: Urun[];
+    durumu: string;
+  }
+
+  interface TamamlananSiparis {
+    id: number;
+    masa: string;
+    zaman: string;
+    tutar: number;
+    urunler: number;
+    durumu: string;
+    odeme: string;
+  }
+  
+  const siparisDetay = (siparis: AktifSiparis) => {
     return (
       <div className="bg-muted/30 p-3 rounded-lg mt-2 space-y-2">
-        {siparis.urunler.map((urun: any) => (
+        {siparis.urunler.map((urun: Urun) => (
           <div key={urun.id} className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <span className="bg-primary text-primary-foreground px-1.5 py-0.5 rounded text-xs">{urun.adet}x</span>
@@ -269,7 +296,7 @@ export default function Page() {
             </div>
           ) : (
             <div className="space-y-4">
-              {tamamlananSiparisler.map(siparis => (
+              {tamamlananSiparisler.map((siparis: TamamlananSiparis) => (
                 <div key={siparis.id} className="bg-card rounded-xl p-4 border hover:border-primary/50 cursor-pointer transition-colors">
                   <div className="flex justify-between items-start">
                     <div>
