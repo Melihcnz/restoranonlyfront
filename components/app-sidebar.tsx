@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Utensils, Home, Table, Users, ShoppingBag, Settings, BarChart2, CalendarRange, ChefHat, FileText, HelpCircle } from "lucide-react"
+import { Utensils, Home, Table, Users, ShoppingBag, Settings, BarChart2, CalendarRange, ChefHat, FileText, HelpCircle, LogOut } from "lucide-react"
 import { usePathname } from "next/navigation" 
+import { useAuth } from "@/hooks/use-auth"
 
 import {
   Sidebar,
@@ -97,6 +98,7 @@ const menuCategories = [
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname()
+  const { user, logout } = useAuth()
   
   // Menü öğeleri için hover state
   const [hoveredItem, setHoveredItem] = React.useState<string | null>(null)
@@ -165,7 +167,33 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroup>
         ))}
         
-        <div className="mt-auto px-3 pt-6 pb-4">
+        <div className="mt-auto px-3 pt-6 pb-4 space-y-4">
+          {/* Kullanıcı bilgisi */}
+          {user && (
+            <div className="bg-muted/30 rounded-lg p-3 flex flex-col">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="bg-primary/10 text-primary rounded-full p-1.5">
+                  <Users className="size-4" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium truncate">
+                    {user.ad_soyad || user.kullanici_adi || "Kullanıcı"}
+                  </p>
+                  <p className="text-xs text-muted-foreground truncate">
+                    {user.email || user.kullanici_adi}
+                  </p>
+                </div>
+              </div>
+              <button 
+                onClick={logout}
+                className="w-full bg-muted/50 hover:bg-muted text-sm py-1.5 px-3 rounded-md flex items-center justify-center gap-2 transition-colors"
+              >
+                <LogOut className="size-3.5" />
+                <span>Çıkış Yap</span>
+              </button>
+            </div>
+          )}
+          
           <div className="bg-muted/50 rounded-lg p-3 text-center text-sm">
             <p className="font-medium mb-1">Restoran Yönetim Sistemi</p>
             <p className="text-muted-foreground text-xs">v1.2.0</p>
